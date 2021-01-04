@@ -1,0 +1,23 @@
+plugins {
+    id "java"
+    id "com.github.johnrengelman.shadow" version "6.1.0"
+}
+
+group "ch.swaechter.wix.jheat"
+version "0.0.1"
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation("info.picocli:picocli:4.5.2")
+}
+
+shadowJar {
+    manifest {
+        attributes 'Main-Class': 'ch.swaechter.wix.jheat.HeatApplication'
+    }
+}
+
+assemble.dependsOn(shadowJar)
